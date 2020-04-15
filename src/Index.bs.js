@@ -2,12 +2,10 @@
 
 var React = require("react");
 var ReactDom = require("react-dom");
+var Data$ReasonReactExamples = require("./LibraryApp/Data.bs.js");
+var Library$ReasonReactExamples = require("./LibraryApp/Library.bs.js");
 var SimpleBanner$ReasonReactExamples = require("./SimpleBanner/SimpleBanner.bs.js");
 var ExampleStyles$ReasonReactExamples = require("./ExampleStyles.bs.js");
-var BlinkingGreeting$ReasonReactExamples = require("./BlinkingGreeting/BlinkingGreeting.bs.js");
-var FetchedDogPictures$ReasonReactExamples = require("./FetchedDogPictures/FetchedDogPictures.bs.js");
-var ReducerFromReactJSDocs$ReasonReactExamples = require("./ReducerFromReactJSDocs/ReducerFromReactJSDocs.bs.js");
-var ReasonUsingJSUsingReason$ReasonReactExamples = require("./ReasonUsingJSUsingReason/ReasonUsingJSUsingReason.bs.js");
 
 var style = document.createElement("style");
 
@@ -31,21 +29,9 @@ function makeContainer(text) {
 
 ReactDom.render(React.createElement(SimpleBanner$ReasonReactExamples.make, { }), makeContainer("My banner"));
 
-ReactDom.render(React.createElement(BlinkingGreeting$ReasonReactExamples.make, {
-          children: "Hello!",
-          interval: 1000
-        }), makeContainer("Blinking Greeting"));
-
-ReactDom.render(React.createElement(BlinkingGreeting$ReasonReactExamples.make, {
-          children: "This is a whole bunch of text that I am passing in to this!",
-          interval: 200
-        }), makeContainer("Another Blinking Greeting by Hasan"));
-
-ReactDom.render(React.createElement(ReducerFromReactJSDocs$ReasonReactExamples.make, { }), makeContainer("Reducer From ReactJS Docs"));
-
-ReactDom.render(React.createElement(FetchedDogPictures$ReasonReactExamples.make, { }), makeContainer("Fetched Dog Pictures"));
-
-ReactDom.render(React.createElement(ReasonUsingJSUsingReason$ReasonReactExamples.make, { }), makeContainer("Reason Using JS Using Reason"));
+ReactDom.render(React.createElement(Library$ReasonReactExamples.make, {
+          books: Data$ReasonReactExamples.bookList
+        }), makeContainer("Library"));
 
 exports.style = style;
 exports.makeContainer = makeContainer;

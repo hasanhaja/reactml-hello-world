@@ -1,4 +1,5 @@
-let reasonReactBlue = "#48a9dc";
+//let reasonReactBlue = "#48a9dc";
+let reasonReactBlue = "#008080";
 
 // The {j|...|j} feature is just string interpolation, from
 // bucklescript.github.io/docs/en/interop-cheatsheet#string-unicode-interpolation

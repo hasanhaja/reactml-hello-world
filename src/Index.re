@@ -28,34 +28,35 @@ let makeContainer = text => {
 };
 
 ReactDOMRe.render(<SimpleBanner />, makeContainer("My banner"));
+ReactDOMRe.render(<Library books=Data.bookList />, makeContainer("Library"));
 
-ReactDOMRe.render(
-  <BlinkingGreeting interval=1000>
-    {React.string("Hello!")}
-  </BlinkingGreeting>,
-  makeContainer("Blinking Greeting"),
-);
+// ReactDOMRe.render(
+//   <BlinkingGreeting interval=1000>
+//     {React.string("Hello!")}
+//   </BlinkingGreeting>,
+//   makeContainer("Blinking Greeting"),
+// );
 
-ReactDOMRe.render(
-  <BlinkingGreeting interval=200>
-    {React.string(
-       "This is a whole bunch of text that I am passing in to this!",
-     )}
-  </BlinkingGreeting>,
-  makeContainer("Another Blinking Greeting by Hasan"),
-);
+// ReactDOMRe.render(
+//   <BlinkingGreeting interval=200>
+//     {React.string(
+//        "This is a whole bunch of text that I am passing in to this!",
+//      )}
+//   </BlinkingGreeting>,
+//   makeContainer("Another Blinking Greeting by Hasan"),
+// );
 
-ReactDOMRe.render(
-  <ReducerFromReactJSDocs />,
-  makeContainer("Reducer From ReactJS Docs"),
-);
+// ReactDOMRe.render(
+//   <ReducerFromReactJSDocs />,
+//   makeContainer("Reducer From ReactJS Docs"),
+// );
 
-ReactDOMRe.render(
-  <FetchedDogPictures />,
-  makeContainer("Fetched Dog Pictures"),
-);
+// ReactDOMRe.render(
+//   <FetchedDogPictures />,
+//   makeContainer("Fetched Dog Pictures"),
+// );
 
-ReactDOMRe.render(
-  <ReasonUsingJSUsingReason />,
-  makeContainer("Reason Using JS Using Reason"),
-);
+// ReactDOMRe.render(
+//   <ReasonUsingJSUsingReason />,
+//   makeContainer("Reason Using JS Using Reason"),
+// );
