@@ -1,13 +1,5 @@
 type libraryData = list(Data.bookData);
 
-type libraryState = {
-  libOpen: bool,
-  freeBookmark: bool,
-  hiring: bool,
-  data: list(Js.Json.t),
-  loading: bool,
-};
-
 let makeBookRecordFromBookData = (~bookData: Data.bookData, ~freeBookmark) => {
   let book: Book.book = {
     title: bookData.title,
@@ -18,31 +10,32 @@ let makeBookRecordFromBookData = (~bookData: Data.bookData, ~freeBookmark) => {
   book;
 };
 
-let makeArrayOfBookElementFromBooks = (books: libraryData) => {
+let makeArrayOfBookElementFromBooks = (~books: libraryData, ~freeBookmark) => {
   books
   ->Belt.List.mapWithIndex((i, currentBook) => {
-      <Book book={makeBookRecordFromBookData(currentBook, false)} />
+      <Book book={makeBookRecordFromBookData(currentBook, freeBookmark)} />
     })
   ->Belt.List.toArray;
 };
 
 [@react.component]
 let make = (~books: libraryData) => {
-  <div>
+  let (libOpen, setLibOpen) = React.useState(() => true);
+  let (freeBookmark, setFreeBookmark) = React.useState(() => true);
+  let (hiring, setHiring) = React.useState(() => false);
+  let (loading, setLoading) = React.useState(() => false);
 
-      <h1> {React.string("The Library is open")} </h1>
-      <button> {React.string("Open/Close")} </button>
-      <h1> {React.string("The Library is open")} </h1>
-      {makeArrayOfBookElementFromBooks(books)->React.array}
-    </div>;
-    // })
-    //     base;
-    //     };
-    //         loading: false
-    //         data: [],
-    //         hiring: false,
-    //         freeBookmark: true,
-    //         libOpen: true,
-    //     let base = {
-    // let (myState, setState) = React.useState(() => {
+  <div>
+    {hiring ? <Hiring /> : <NotHiring />}
+    <button onClick={_ => setHiring(prev => !prev)}>
+      {React.string("Toggle hiring")}
+    </button>
+    <h1>
+      {React.string("The Library is " ++ (libOpen ? "open." : "closed."))}
+    </h1>
+    <button onClick={_ => setLibOpen(prevState => !prevState)}>
+      {React.string("Open/Close")}
+    </button>
+    {makeArrayOfBookElementFromBooks(books, freeBookmark)->React.array}
+  </div>;
 };
